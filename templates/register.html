@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - BioFusion</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+</head>
+<body>
+  <div class="app">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-logo">
+          <i data-lucide="shield-check" class="icon"></i>
+          <span class="logo-text">BioFusion</span>
+        </div>
+        <nav class="navbar-menu">
+          <a href="{% url 'home' %}" class="menu-item">Home</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="register-section">
+        <div class="container">
+          <h2>Register</h2>
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block">Create Account & Setup Biometrics</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</body>
+</html>
